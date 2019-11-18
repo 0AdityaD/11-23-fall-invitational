@@ -11,8 +11,8 @@ n, p = line.split(' ')
 n = int(n)
 p = int(p)
 
-assert 1 <= n <= 10000000
-assert 1 <= p <= 10000000
+assert 1 <= n <= 1000000000
+assert 100 <= p <= 1000000000
 
 assert not stdin.readline()
 

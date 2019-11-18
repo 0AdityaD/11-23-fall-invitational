@@ -20,7 +20,7 @@ def writeTestCase(N, P):
         print(N, P, file=fout)
     with open('secret/%02d.ans' % tc, 'w') as outf:
         with open(filename, 'r') as inf:
-            subprocess.call(['python2', '../submissions/accepted/aditya_ac.py'],
+            subprocess.call(['./aditya.out'],
                             stdin=inf, stdout=outf)
 
 
@@ -30,11 +30,17 @@ def prep():
     shutil.rmtree(path, True)
     os.mkdir(path)
     time.sleep(1)
+    subprocess.call(['g++', '-std=c++17', '-O3', '-o', 'aditya.out', '../submissions/accepted/aditya.cpp'])
 
-
-def randGen():
+def randGenSmall():
     N = random.randint(1000000, 10000000)
-    P = random.randint(1, 100)
+    P = random.randint(100, 200)
+    return (N, P)
+
+
+def randGenBig():
+    N = random.randint(100000000, 1000000000)
+    P = random.randint(100, 200)
     return (N, P)
 
 
@@ -42,7 +48,9 @@ def main():
     global tc
     prep()
     for i in range(20):
-        writeTestCase(*randGen())
+        writeTestCase(*randGenSmall())
+    for i in range(20):
+        writeTestCase(*randGenBig())
 
 
 if __name__ == '__main__':
