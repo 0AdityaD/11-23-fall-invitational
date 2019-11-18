@@ -18,7 +18,7 @@ int main(){
 		cin >> a[i];
 	}
 	for(int i = 0;i < n; ++i){
-		memset(cnt,0,sizeof(cnt));	
+		memset(cnt,0,sizeof(int) * k);	
 		int best = -1, bestcnt = -1;
 		for(int j = i; j < n; ++j){
 			cnt[a[j]]++;

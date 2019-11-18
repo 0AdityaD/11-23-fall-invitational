@@ -1,0 +1,24 @@
+\problemname{Martian Patrol}
+
+Being so close to a nuclear superpower, martians take their defense very seriously.
+
+The martian military base is in the form of a binary tree rooted at $1$, with node numbers $1 \dots N$. Some martian soldier patrol paths on the tree, moving from node to node, always facing toward the root (this is the entrance). 
+
+The martian patrol system is very complex. Every martian soldier is assigned two endpoints for their patrol, and moves at a constand speed between these endpoints, always taking the shortest path between these points. No two soldiers share an endpoint, and a soldier's left and right endpoints cannot be the same.
+
+The soldiers are very well trained, so much so that it takes all of them exactly T second to go from one endpoint to the other (every edge has the same length 1). In addition, all soldiers start their patrol at the same time at their left endpoint.
+
+(For any given node $n$, all nodes in its left subtree are considered "to the left", and similarly all nodes in its right subtree are considered "to the right")
+
+However, the soldiers can get very lonely, so they like to gossip with their buddies. If their path intersects another soldiers path they consider them their buddy (note that the two soldiers themselves don't need to meet, just their paths). Soldiers become sad if one of their buddies is always on one side (always to the left or equal, or always to the right or equal), as when they gossip its hurts their ear.
+
+In addition, their exists a super secret room, which must be added as a child of some node in the martian base (wherever it is added it cannot violate the binary nature of the tree). Martians are allowed to have this room as one of their endpoints.
+
+Your job is to count the number of possible non-sad arrangements of soldiers and rooms $mod 10^9 + 7$. An arrangement is considered non-sad if no soldier is sad. Two arrangements are considered different if and only if there exists a node in one position not in the other, or a soldiers path in one arrangement doesn't exist in the other. (Note that soldiers are not considered distinct)
+
+\section*{Input}
+On the first line, two space separated integers $N, T$ with $1 \leq N \leq 10^6$ and $1 \leq T \leq 10$.
+$N$ lines follow, the $i$th (1-indexed) line each having two integers $l_i, r_i$, denoting the left and right child of node $i$. $0$ denotes no child.
+
+\section*{Output}
+A single integer, the number of non-sad arrangements of soldiers and rooms $mod 10^9 + 7$.
