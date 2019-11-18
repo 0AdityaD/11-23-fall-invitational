@@ -1,0 +1,40 @@
+\problemname{Bump, Set, Spike!}
+
+Volleyball season is starting at your local recreational center! This means all kinds of volleyball
+leagues are about to be in full swing: leagues for youths, seniors, amateurs, and so on. The most
+prestigious and highly contested league at the rec center is the Premier Adult Coed Volleyball
+League. In recent years, the prestige of the league has become problematic, as all the top referees
+have opted to shirk their duties and compete as players, leaving only sub-par referees to oversee
+league matches.
+
+To combat this, league organizers have proposed the possibility of a program that can play the role of
+referee. More specifically, for each rally, a sequential record of who touches the ball is streamed to
+the program, and from that it should be determined in real-time if there are any violations of the
+following rules:
+
+\begin{enumerate}
+    \item A player cannot touch the ball twice in a row.
+    \item A team cannot touch the ball more than three times in a row.
+    \item If a team touches the ball twice or more before it is hit to the other team, both a man
+    and a woman must have touched the ball at least once.
+\end{enumerate}
+
+Other violations, such as net touches, carries, or the ball landing out of bounds will still be called
+by human referees, so the program need not worry about those.
+
+The league organizers have come to you for help in creating this program. The ball is in your court!
+
+\section*{Input}
+
+The first line contains a single integer $N$ $(2 \leq N \leq 10^5)$, the number of touches in the rally. 
+Then follows $N$ lines, with the $i$th line describing the $i$th touch in the rally. Each of the $N$ lines
+will contain a string consisting of three characters. The first character will be either \texttt{A} or
+\texttt{B}, denoting the team that touched the ball. The second character will be one of \texttt{1},
+\texttt{2}, \texttt{3}, \texttt{4}, \texttt{5}, or \texttt{6}, denoting the specific player on the team that
+touched the ball. The final character will be either \texttt{W} or \texttt{M}, denoting whether the player
+that touched the ball was a man or a woman.
+
+\section*{Output}
+
+If there was a violation in the rally, print either \texttt{A} or \texttt{B}: whichever team was first to
+commit a violation. If there was no violation, print \texttt{No violation}.
