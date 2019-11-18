@@ -1,0 +1,12 @@
+source: University of Texas 2019 Fall invitational
+license: cc by-sa
+validation: default
+limits:
+    time_multiplier: 5
+    time_safety_margin: 2
+    memory: 2048
+    output: 8
+    compliation_time: 60
+    validation_time: 60
+    validation_memory: 2048
+    validation_output: 8
