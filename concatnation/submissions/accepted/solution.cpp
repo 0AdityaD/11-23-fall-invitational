@@ -35,9 +35,10 @@ int main(){
 		}
 		if(!valid)continue;
 		else{
-			val[s.length()][s[0] - 'a'] = 1;
+			valstring[s.length()][s[0]] = 1;
 		}
 	}
+
 
 	for(int i = 0;i < n; ++i){
 		string &s = v[i];
