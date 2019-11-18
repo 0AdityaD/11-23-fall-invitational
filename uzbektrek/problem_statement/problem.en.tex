@@ -1,0 +1,39 @@
+\problemname{Weird Base Problem}
+
+Traveler Todd plans on making the trek from Kazakhstan to Turkmenistan.
+In order to do so, he must navigate through the great nation of Uzbekistan.
+
+\medskip
+
+Unfortunately, Uzbekistan imposes a tax on all foreign travelers who pass
+through it. Uzbekistan has imposed a particularly peculiar tax on Todd.
+While trekking through Uzbekistan, Todd must wear special shoes with the
+blue, white and green flag of Uzbekistan stiched onto them.
+
+\medskip
+
+However, each shoe only lasts for a certain amount of footsteps. Moreover,
+each shoe lasts for exactly $p^k$ footsteps for some $k \ge 0$.
+
+\medskip
+
+Todd predetermines that it will take him $n$ footsteps to travel through
+Uzbekistan. He then goes to the Uzbek Shoe Depot where he purchases all
+the shoes he needs to complete his journey.
+
+\medskip
+
+The Uzbek Shoe Depot is a luxury store. Todd can order as many shoes as he
+likes. For each shoe, Todd gets to pick $k$ which determines that the shoe
+will last for $p^k$ footsteps. Help Todd determine how many ways he can
+order sets of shoes so that he can wear all the shoes in sequence to travel
+\textbf{exactly} $n$ footsteps!
+
+
+\section*{Input}
+The first line contains space-separated integers $n$ and $p$ such that
+$1 \leq n \leq 10^7$ and $1 \leq p \leq 10^7$.
+
+\section*{Output}
+Output a single integer, the number of ways to express $n$ as a sum of
+powers of $p$. Since the answer can be large, output it modulo $10^9 + 7$.
