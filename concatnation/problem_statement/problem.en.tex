@@ -1,0 +1,21 @@
+\problemname{Con-cat-nation}
+
+In Catopolis, there is a widely held belief that their neighbor, Pupridge, is preparing to invade. The coolest cats have decided to send their best concats into Pupridge as spys, however there is a problem. Pupridge has a bullet-proof identification scheme: every pet seeking entry must present an id (string). The Border Collies check that the string's length is within allowed bounds, and that every character is followed by an allowed sucessor. As cats don't have opposable thumbs they can't type, so they can't forge ids!
+
+\medskip
+
+Of course, the crafty cats have found a workaround: they can use a scanner and printer to append a fellow concat's id to their own! However resources are scarce, each cat can only append one copy of a fellow concat's id (Note that they are allowed to append a copy of their own id).
+
+\medskip
+
+For each concat, it is your job to figure out if they can pass verification.
+
+Ids are only made of the latin lowercase characters a through z.
+
+\section*{Input}
+On the first line, $n, x, y$, the number of concats, minimum allowed length of the id, and the maximum allowed length of the id respectively. $1 \leq N \leq 10^5$, $0 \leq x \leq y \leq 20$.
+26 lines follow, denoting the valid successors of the characters "a,b,c,...z" respectively. Each line has the format $x s$, where $x$ is the number of valid successors and $s$ is a string containing all of the valid successors.
+$n$ lines follow, denoting the id of the $i$th concat.
+
+\section*{Output}
+$n$ lines, the $i$th of is either "Feline good!" if the concat can pass verification, or "Let meowt!" if they cannot.
