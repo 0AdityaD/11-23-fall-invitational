@@ -16,7 +16,9 @@ following rules:
     \item A player cannot touch the ball twice in a row.
     \item A team cannot touch the ball more than three times in a row.
     \item If a team touches the ball twice or more before it is hit to the other team, both a man
-    and a woman must have touched the ball at least once.
+    and a woman must have touched the ball at least once. A ball is considered to be "hit to the other team"
+    once the other team makes contact with the ball, OR at the end of a rally. For example, if a rally ends
+    with three consecutive hits from women on team \texttt{A}, that is a violation.
 \end{enumerate}
 
 Other violations, such as net touches, carries, or the ball landing out of bounds will still be called
@@ -32,7 +34,8 @@ will contain a string consisting of three characters. The first character will b
 \texttt{B}, denoting the team that touched the ball. The second character will be one of \texttt{1},
 \texttt{2}, \texttt{3}, \texttt{4}, \texttt{5}, or \texttt{6}, denoting the specific player on the team that
 touched the ball. The final character will be either \texttt{W} or \texttt{M}, denoting whether the player
-that touched the ball was a man or a woman.
+that touched the ball was a man or a woman. Throughout a rally, the gender of players is guaranteed to
+remain consistent.
 
 \section*{Output}
 
