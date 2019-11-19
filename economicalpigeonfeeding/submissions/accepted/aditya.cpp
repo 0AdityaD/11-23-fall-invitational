@@ -1,8 +1,4 @@
-#include <bits/stdc++.h>
 #include <bits/extc++.h>
-#define rep(x,a,b) for (int x = (a); x < (b); x++)
-#define sz(x) (x.size())
-#define all(x) x.begin(), x.end()
 
 using namespace std;
 using ll = long long;
@@ -10,91 +6,96 @@ using vll = vector<ll>;
 using vi = vector<int>;
 
 constexpr int MAXN = 505;
-constexpr int MAXM = 105;
-constexpr ll INF = 1000000000;
+constexpr int MAXM = 205;
 
 int N, M;
 int G[MAXN][MAXN];
 int P[MAXM];
 int F[MAXM];
 
-ll MinCostMatching(const vector<vll>& cost, vi& L, vi& R) {
-	int n = sz(cost), mated = 0;
-	vll dist(n), u(n), v(n);
-	vi dad(n), seen(n);
+#define rep(i, a, b) for (int i = a; i < (b); ++i)
+#define trav(a, x) for (auto& a : x)
+#define all(x) x.begin(), x.end()
 
-	/// construct dual feasible solution
-	rep(i,0,n) {
-		u[i] = cost[i][0];
-		rep(j,1,n) u[i] = min(u[i], cost[i][j]);
-	}
-	rep(j,0,n) {
-		v[j] = cost[0][j] - u[0];
-		rep(i,1,n) v[j] = min(v[j], cost[i][j] - u[i]);
-	}
+typedef long long int ll;
+typedef pair<int, int> pii;
+typedef vector<int> vi;
 
-	/// find primal solution satisfying complementary slackness
-	L = R = vi(n, -1);
-	rep(i,0,n) rep(j,0,n) {
-		if (R[j] != -1) continue;
-		if (cost[i][j] - u[i] - v[j] == 0) {
-			L[i] = j;
-			R[j] = i;
-			mated++;
-			break;
-		}
-	}
+constexpr ll INF = numeric_limits<ll>::max() / 4;
+typedef vector<ll> VL;
 
-	for (; mated < n; mated++) { // until solution is feasible
-		int s = 0;
-		while (L[s] != -1) s++;
-		fill(all(dad), -1);
-		fill(all(seen), 0);
-		rep(k,0,n)
-			dist[k] = cost[s][k] - u[s] - v[k];
+struct MCMF {
+  int N;
+  vector<vi> ed, red;
+  vector<VL> cap, flow, cost;
+  vi seen;
+  VL dist, pi;
+  vector<pii> par;
 
-		int j = 0;
-		for (;;) { /// find closest
-			j = -1;
-			rep(k,0,n){
-				if (seen[k]) continue;
-				if (j == -1 || dist[k] < dist[j]) j = k;
-			}
-			seen[j] = 1;
-			int i = R[j];
-			if (i == -1) break;
-			rep(k,0,n) { /// relax neighbors
-				if (seen[k]) continue;
-				auto new_dist = dist[j] + cost[i][k] - u[i] - v[k];
-				if (dist[k] > new_dist) {
-					dist[k] = new_dist;
-					dad[k] = j;
-				}
-			}
-		}
+  MCMF(int N)
+    : N(N), ed(N), red(N), cap(N, VL(N)), flow(cap), cost(cap), seen(N),
+      dist(N), pi(N), par(N) {}
 
-		/// update dual variables
-		rep(k,0,n) {
-			if (k == j || !seen[k]) continue;
-			auto w = dist[k] - dist[j];
-			v[k] += w, u[R[k]] -= w;
-		}
-		u[s] += dist[j];
+  void addEdge(int from, int to, ll cap, ll cost) {
+    this->cap[from][to] = cap;
+    this->cost[from][to] = cost;
+    ed[from].push_back(to);
+    red[to].push_back(from);
+  }
 
-		/// augment along path
-		while (dad[j] >= 0) {
-			int d = dad[j];
-			R[j] = R[d];
-			L[R[j]] = j;
-			j = d;
-		}
-		R[j] = s;
-		L[s] = j;
-	}
-	auto value = vi(1)[0];
-	rep(i,0,n) value += cost[i][L[i]];
-	return value;
-}
+  void path(int s) {
+    fill(all(seen), 0);
+    fill(all(dist), INF);
+    dist[s] = 0;
+    ll di;
+
+    __gnu_pbds::priority_queue<pair<ll, int>> q;
+    vector<decltype(q)::point_iterator> its(N);
+    q.push({0, s});
+
+    auto relax = [&](int i, ll cap, ll cost, int dir) {
+      ll val = di - pi[i] + cost;
+      if (cap && val < dist[i]) {
+        dist[i] = val;
+        par[i] = {s, dir};
+        if (its[i] == q.end())
+          its[i] = q.push({-dist[i], i});
+        else
+          q.modify(its[i], {-dist[i], i});
+      }
+    };
+
+    while (!q.empty()) {
+      s = q.top().second;
+      q.pop();
+      seen[s] = 1;
+      di = dist[s] + pi[s];
+      trav(i, ed[s]) if (!seen[i])
+        relax(i, cap[s][i] - flow[s][i], cost[s][i], 1);
+      trav(i, red[s]) if (!seen[i]) relax(i, flow[i][s], -cost[i][s], 0);
+    }
+    rep(i, 0, N) pi[i] = min(pi[i] + dist[i], INF);
+  }
+
+  pair<ll, ll> maxflow(int s, int t) {
+    ll totflow = 0, totcost = 0;
+    while (path(s), seen[t]) {
+      ll fl = INF;
+      for (int p, r, x = t; tie(p, r) = par[x], x != s; x = p)
+        fl = min(fl, r ? cap[p][x] - flow[p][x] : flow[x][p]);
+      totflow += fl;
+      for (int p, r, x = t; tie(p, r) = par[x], x != s; x = p)
+        if (r)
+          flow[p][x] += fl;
+        else
+          flow[x][p] -= fl;
+    }
+    rep(i, 0, N) rep(j, 0, N) totcost += cost[i][j] * flow[i][j];
+    return {totflow, totcost};
+  }
+};
+
+
 
 int main() {
   cin >> N >> M;
@@ -107,10 +108,12 @@ int main() {
   map<int, int> matchIndex;
   for (int i = 0; i < M; i++) {
     cin >> P[i];
+    assert(!matchIndex.count(P[i]));
     matchIndex[P[i]] = c++;
   }
   for (int i = 0; i < M; i++) {
     cin >> F[i];
+    assert(!matchIndex.count(F[i]));
     matchIndex[F[i]] = c++;
   }
   for (int k = 0; k < N; k++) {
@@ -120,17 +123,22 @@ int main() {
       }
     }
   }
-  vector<vll> cost(c, vll(c, INF));
+  MCMF mcmf(c + 2);
+  int src = c;
+  int sink = c + 1;
   for (int i = 0; i < M; i++) {
     int cp = matchIndex[P[i]];
     for (int j = 0; j < M; j++) {
       int cf = matchIndex[F[j]];
-      cost[cp][cf] = G[P[i]][F[j]];
-      cost[cf][cp] = G[P[i]][F[j]];
+      mcmf.addEdge(cp, cf, 1, G[P[i]][F[j]]);
     }
   }
-  vi L, R;
-  ll tot = MinCostMatching(cost, L, R);
-  cout << tot / 2 << endl;
+  for (int i = 0; i < M; i++) {
+    mcmf.addEdge(src, matchIndex[P[i]], 1, 0);
+    mcmf.addEdge(matchIndex[F[i]], sink, 1, 0);
+  }
+  auto res = mcmf.maxflow(src, sink);
+  assert(res.first == M);
+  cout << res.second << endl;
   return 0;
 }
