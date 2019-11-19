@@ -8,8 +8,8 @@ ll add(ll x, ll y){
 }
 
 int main(){
-	int n,t;
-	cin >> n >> t;
+	int n;
+	cin >> n;
 	int open = 0;
 	for(int i = 1;i <= n; ++i){
 		int x,y;

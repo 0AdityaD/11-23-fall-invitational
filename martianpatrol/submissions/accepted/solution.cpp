@@ -45,8 +45,8 @@ int main(){
 		assert(mul(fac[i],inv[i]) == 1);
 	}
 
-	int n,t;
-	cin >> n >> t;
+	int n;
+	cin >> n;
 	int open = 0;
 	for(int i = 1;i <= n; ++i){
 		int x, y;		
