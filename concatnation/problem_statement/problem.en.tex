@@ -8,7 +8,7 @@ As cats don't have opposable thumbs they can't type, so they can't forge ids!
 
 \medskip
 
-Of course, the crafty cats have found a workaround: they can use a scanner and printer to append a fellow cat's id to their own! However resources are scarce, each cat can only append one copy of a fellow cat's id (Note that they are allowed to append a copy of their own id).
+Of course, the crafty cats have found a workaround: they can use a scanner and printer to append a fellow cat's id to their own! However resources are scarce, each cat can only append one id to their own, and this id has to be from one of their fellow cat's. (Note that they are allowed to append a copy of their own id).
 
 \medskip
 
@@ -19,7 +19,7 @@ Ids are only made of the latin lowercase characters a through z.
 \section*{Input}
 On the first line, $n, x, y$, the number of cats, minimum allowed length of the id, and the maximum allowed length of the id respectively. $1 \leq N \leq 10^5$, $0 \leq x \leq y \leq 20$.
 26 lines follow, denoting the valid successors of the characters "a,b,c,...z" respectively. Each line has the format $x s$, where $x$ is the number of valid successors and $s$ is a string containing all of the valid successors.
-$n$ lines follow each containing a string $id_i$, $0 \leq |id_i| \leq 20$ denoting the id of the $i$th cat.
+$n$ lines follow each containing a string $id_i$, $1 \leq |id_i| \leq 20$ denoting the id of the $i$th cat.
 
 \section*{Output}
 $n$ lines, the $i$th of is either "Feline good!" if the cat can pass verification, or "Get meowt!" if they cannot.

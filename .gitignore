@@ -3,3 +3,4 @@
 *.zip
 *.pdf
 .DS_Store
+a.out.dSYM
