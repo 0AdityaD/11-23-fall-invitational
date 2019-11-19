@@ -7,15 +7,12 @@ N_LIM = 1000000
 T_LIM = 10
 
 integer = "(0|[1-9]\d*)"
-twoints = re.compile(integer + ' ' + integer + "\n")
+one = re.compile(integer + "\n")
 
 line = stdin.readline()
-assert twoints.match(line)
-n,t = line.split(' ')
-n = int(n)
-t = int(t)
+assert one.match(line)
+n = int(line)
 assert 1 <= n <= N_LIM 
-assert 1 <= t <= T_LIM 
 
 arr = [0 for i in range(0,n+1)]
 
