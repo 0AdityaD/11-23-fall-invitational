@@ -1,0 +1,42 @@
+\problemname{Red Light, Green Light}
+
+A recent study has shown that long commutes can have negative effects on one's happiness. Upon reading
+this study, Jay had suddenly become quite unhappy with his long commute to work; it seems the study is
+true after all. Jay now has frequent dreams in which he has a short daily commute, and these pleasant
+dreams often cause Jay to sleep through his alarms in the morning.
+
+On the day of his Very Important Meeting, Jay once again oversleeps, to his dismay. As he leaves his house
+at time $0$, he realizes he only has $T$ minutes to reach his workplace. The city Jay works in contains
+$N$ intersections (labeled $1$ to $N$) and $M$ one-way roads between intersections that vary in length.
+His house is located at intersection $1$, and his workplace is located at intersection $N$.
+
+The real culprits responsible for Jay's long commute are the traffic lights that are located on every road.
+Jay has driven around the city so much that he's realized that each light operates on a cycle: for the $i$th
+road, the light is green for $g_i$ minutes, then red for $r_i$ minutes, then green for $g_i$ minutes, and so 
+on. Jay has also figured out the specific values of $g_i$ and $r_i$ for every road in the city, and he has
+calculated the first time $t_i$ after time $0$ (when Jay leaves his house) that each road's traffic light is
+green. Here, $t_i$ will fall somewhere in the inclusive range $[0, r_i]$. Jay can only take a road if the
+light is green; otherwise, he must wait at the intersection or choose to take a different road. Once he
+enters a road, he can continue to the end even if the light turns red before he reaches the next
+intersection.
+
+While Jay wants to make it to his meeting on time, he also wants to avoid driving too fast. Knowing all
+this information about the city's traffic lights, Jay wants to know the minimum speed he needs to drive
+in order to make it to his meeting in time.
+
+\section*{Input}
+
+The first line of input contains three space-separated integers, $N$ ($2 \leq N \leq 10^5$), $M$
+($1 \leq M \leq 10^5$), and $T$ ($1 \leq T \leq 10^9$). Then follows $M$ lines, the $i$th of which
+describes the $i$th road in the city. Each of the $M$ lines will contain six space-separated integers,
+$u_i$, $v_i$ ($1 \leq u_i, v_i \leq N$), $l_i$ ($1 \leq l_i \leq 10^6$), $g_i$, $r_i$
+($1 \leq g_i, r_i \leq 10^4$), $t_i$ ($1 \leq t_i \leq g_i$), denoting that the $i$th road is from
+intersection $u_i$ to intersection $v_i$, has a length of $l_i$ feet, and the period of the road is
+described by $g_i$, $r_i$, and $t_i$ (as explained in the statement above).
+
+It is guaranteed that Jay will be able to reach his workplace.
+
+\section*{Output}
+
+Output the minimum speed Jay needs to drive in feet per minute in order to reach his Very Important Meeting
+on time. Answers within a relative or absolute error of $10^{-6}$ will be accepted.
