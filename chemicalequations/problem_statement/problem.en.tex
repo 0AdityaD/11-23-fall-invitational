@@ -1,14 +1,13 @@
-\problemname{Candy Consumption}
+\problemname{Chemical Equations}
 
 Bob is a master chemist and has a list of $N$ different chemical equations that detail how to create specific
-compounds. Each chemical equation consists of a compound and $R$ reactants with associated quanitites that
-can be used to make the compound. A base compound is defined as a reactant that cannot be further reduced into
-other reactants according to the list of chemical equations. Given this list of chemical equations and a 
-compound that is in the list of chemical equations (possibly only as a reactant), output an alphabetized list
-of base compounds and quantities that can be used to form the given compound. Note that the chemical equation
-that forms the given compound will not necessarily contain only base compounds. You are guaranteed that the
-list of chemical equations will not form a cycle, meaning that there exists no compound that can be used to 
-make its constituent reactants.
+compounds. Each chemical equation consists of a compound and $R$ reactants with associated quantities that can 
+be used to make the compound. A base compound is defined as a reactant that cannot be further reduced into other 
+reactants according to the list of chemical equations. Given this list of chemical equations and a compound that
+is in the list of chemical equations (possibly only as a reactant), output an alphabetized list of base compounds 
+and quantities that can be used to form the given compound. Note that the chemical equation that forms the given 
+compound will not necessarily contain only base compounds. You are guaranteed that the list of chemical equations
+will not form a cycle, meaning  that there exists no compound that can be used to make its constituent reactants.
 
 \section*{Input}
 The first line contains a single integer $N$ such that $1 \leq N \leq 1000$.
@@ -16,12 +15,13 @@ Next will follow $N$ chemical equations.
 
 The start of each chemical equation consists of a line that has the name of the compound followed by an integer,
 $R$ such that $1 \leq R \leq 10$, that indicates $R$ reactants are used to make the compound. The next $R$ 
-lines of the chemical equation consist of a number $q_i$ such that $1 \leq q_i \leq 10$ and a component reactant
-name.
+lines of the chemical equation consist of a number $q_i$ (the quantity of the component reactant needed to make
+the compound) such that $1 \leq q_i \leq 10$ and the component reactant name.
 
 The final line of the input will contain a compound name that was previously in the list of chemical
-equations.
+equations. You will use this compound name and output all the base compounds that are needed to form 
+this compound.
 
 \section*{Output}
 Given that you can form the desired compound with $B$ base compounds, output $B$ lines (sorted alphabetically)
-with each base compound name and the quanitity of that base compound needed.
+with each base compound name and the quantity of that base compound needed.
