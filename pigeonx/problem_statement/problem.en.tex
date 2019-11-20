@@ -25,7 +25,8 @@ Help 21 Savage match pigeons with seed!
 \section*{Input}
 
 The first line of input has two space separated integers $N$ and $M$, the
-number of rooms and the number of pigeons and seed stashes.
+number of rooms and the number of pigeons and seed stashes. It is guaranteed
+that $1 \le N \le 500$ and $1 \le 2M \le N$.
 
 $N$ lines follow. Each line has $N$ space separated integers. The $j$th entry
 on the $i$th line represents the length of the corridor from room $i$ to room
@@ -35,10 +36,12 @@ is also guaranteed that the length of the corridor from room $i$ to room $i$
 for all $i$ is $0$.
 
 The next line has $M$ space separated unique integers representing the room
-locations of the $M$ pigeons.
+locations of the $M$ pigeons. It is guaranteed that all integers $F_i$ satisfy
+$0 \le P_i < N$.
 
 The final line has $M$ space separated unique integers representing the room
-locations of the $M$ seed stashes.
+locations of the $M$ seed stashes. It is guaranteed that all integers $F_i$ satisfy
+$0 \le F_i < N$.
 
 \section*{Output}
 
