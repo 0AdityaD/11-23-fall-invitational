@@ -68,7 +68,7 @@ int main() {
     while (!p(hi)) {
         hi *= 2;
     }
-    while (lo + 1e-6 < hi) {
+    while (lo + 1e-8 < hi) {
         double mid = (lo + hi) / 2.0;
         if (p(mid)) {
             hi = mid;

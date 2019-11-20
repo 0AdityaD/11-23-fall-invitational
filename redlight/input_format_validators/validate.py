@@ -3,7 +3,7 @@ import re
 import sys
 from collections import defaultdict, deque
 
-MAXN = 100000
+MAXN = 50000
 MAXT = int(1e9)
 MAXG = 10000
 MAXL = 1000000
@@ -24,12 +24,16 @@ assert 1 <= m <= MAXN
 assert 1 <= t <= MAXT
 
 graph = defaultdict(list)
+seen = set()
 for _ in range(m):
     line = stdin.readline()
     assert sixints.match(line)
     u, v, l, g, r, ti = map(int, line.split())
     assert 1 <= u <= n
     assert 1 <= v <= n
+    assert u != v
+    assert (u, v) not in seen
+    seen.add((u, v))
     assert 1 <= l <= MAXL
     assert 1 <= g <= MAXG
     assert 1 <= r <= MAXG

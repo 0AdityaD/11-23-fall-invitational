@@ -58,7 +58,7 @@ def gen_graph(n, m, lmin, lmax, gmin, gmax):
         seen.add((u, v))
     while len(edges) < m:
         u, v = randint(1, n), randint(1, n)
-        if (u, v) in seen:
+        if (u, v) in seen or u == v:
             continue
         l = randint(lmin, lmax)
         g, r = randint(gmin, gmax), randint(gmin, gmax)
@@ -80,7 +80,7 @@ def gen_linked_list(n, m, lmin, lmax, gmin, gmax):
 
 
 def gen_linked_list_with_edge():
-    n = 100000
+    n = 50000
     edges = []
     for i in range(1, n):
         u, v = i, i + 1
@@ -88,7 +88,7 @@ def gen_linked_list_with_edge():
         g, r = 10000, 1
         t = 0
         edges.append((u, v, l, g, r, t))
-    edges.append((100000, n, 1, 1, 10000, 10000))
+    edges.append((1, n, 100000, 1, 10000, 10000))
     return n, edges
 
 
@@ -110,16 +110,16 @@ def main():
         writeTestCase((n, t, edges))
     # generate large, dense random graphs
     for _ in range(6):
-        n, edges = gen_graph(20000, 100000, 100000, 1000000, 100, 10000)
+        n, edges = gen_graph(10000, 50000, 100000, 1000000, 100, 10000)
         t = randint(1000000, 1000000000)
         writeTestCase((n, t, edges))
     # generate large, sparse random graphs
     for _ in range(3):
-        n, edges = gen_graph(90000, 100000, 100000, 1000000, 100, 10000)
+        n, edges = gen_graph(45000, 50000, 100000, 1000000, 100, 10000)
         t = randint(1000000, 1000000000)
         writeTestCase((n, t, edges))
     # generate linkedlist
-    n, edges = gen_linked_list(100000, -1, 100000, 1000000, 100, 10000)
+    n, edges = gen_linked_list(50000, -1, 100000, 1000000, 100, 10000)
     t = randint(1000000, 1000000000)
     writeTestCase((n, t, edges), desc='linkedlist')
     # generate linkedlist with edge from 1 to n
