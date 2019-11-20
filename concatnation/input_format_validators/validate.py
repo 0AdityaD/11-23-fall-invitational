@@ -28,4 +28,7 @@ for i in range(0, n):
 	line = stdin.readline()
 	assert 0 < len(line) - 1 <= S_LIM
 
+line = stdin.readline()
+assert line == ""
+
 sys.exit(42)
