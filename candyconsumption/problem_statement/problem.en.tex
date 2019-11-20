@@ -1,17 +1,29 @@
 \problemname{Candy Consumption}
 
-Kevin has $N$ different types of candies and an unlimited supply of each one. He has a unique procedure for
-eating these candies, which involves randomly selecting a type, eating a candy of that type, and continuing
-until he eats a candy type that he has already eaten previously (at which point he gets bored and stops).
-The candies Kevin eats and the order he eats them in form a candy consumption sequence. Note that you should
-include the candy Kevin eats for the second time in the candy consumption sequence.
+Kevin loves to eat all types of candy: chocolate, hard candy, jelly beans, gummy bears, and so on.
+There are $N$ different types of candy that he is particularly enamored of at the moment, and unfortunately
+for his dentist, he maintains a virtually unlimited stash of each type.
 
-How many candies will Kevin eat across all possible candy consumption sequences. Since this answer can be
-very large, output the answer mod $1000000007$.
+Kevin considers himself something of a candy connoiseur; he is very particular about how he consumes his
+candy. He finds that variability in the sequence of candies that he eats is extremely important, as
+different qualities of the candies are really highlighted by certain sequences. For example, eating gummy
+bears after hard candy really accentuates the chewy texture, whereas eating jelly beans after eating dark
+chocolate really brings out the sweetness and flavor of the jelly beans. Knowing this, Kevin has devised the
+following procedure for eating the $N$ types of candy he currently enjoys. He selects a candy from amongst
+the $N$ types at random, and eats a candy of that type. He then repeats, continuing to randomly select and
+consume a candy until he eats a candy type that he has eaten previously. Once he has repeated a candy
+type, he finds that the sequence's variability has been ruined, so he stops. Kevin calls this ordered
+sequence of candies that he has eaten a Candy Consumption Sequence. For example, say he randomly chooses
+to eat chocolate, then jelly beans, then hard candy, then gummy bears, then chocolate again. This is a
+Candy Consumption Sequence with 5 total candies.
+
+Kevin realizes that there are a finite number of unique Candy Consumption Sequences. If he consumes all the
+candies for every possible unique Candy Consumption Sequence, how many total candies will he have eaten? 
+Since this answer may be very large, output its remainder modulo the prime $1000000007$.
 
 \section*{Input}
-The first line contains a single integer $N$ such that $1 \leq N \leq 10^6$.
+The first line contains a single integer $N$ ($1 \leq N \leq 10^6$).
 
 \section*{Output}
-Output a single integer representing the number of candy consumed over all possible sequences mod
-$1000000007$.
+Output a single integer representing the number of candy consumed over all possible Candy Consumption
+Sequences, modulo $1000000007$.
