@@ -21,7 +21,6 @@ def writeTestCase(data, sample=False):
         outputfilename = 'secret/%02d.ans' % tc
 
     with open(filename, 'w') as fout:
-        print(len(data), file=fout)
         print('\n'.join(data), file=fout)
     with open(outputfilename, 'w') as outf:
         with open(filename, 'r') as inf:
