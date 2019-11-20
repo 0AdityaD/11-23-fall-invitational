@@ -1,0 +1,61 @@
+\problemname{Undetermined Determinant}
+
+Two of the classes freshmen at the University of Texas often take are
+linear algebra and discrete math. The former teaches vectors, matrices, and
+operations on them, while the latter covers a variety of topics including
+combinatorics and graph theory.
+
+John is a freshman at UT, and it is finals season. His professors gave study
+guides for their final exams, and one of the bullet points in the linear
+algebra study guide is the following:
+
+\begin{itemize}
+    \item Given a matrix, you should be able to compute its determinant.
+\end{itemize}
+
+Here's a bullet point in the discrete math study guide:
+
+\begin{itemize}
+    \item Given a graph, you should be able to write down its adjacency matrix.
+\end{itemize}
+
+In the course of his studying, John realized that these problems can be
+combined naturally: given a graph, compute the determinant of its adjacency
+matrix. After solving this problem a few times, John began to grow bored, and
+he wondered if he could find some information about the answer to this question
+for a whole class of graphs. He wrote the following question on a blank page
+in his notebook before going to sleep:
+
+\begin{itemize}
+    \item Given a positive integer $N$, consider a uniform random labeled tree
+        on $N$ vertices. What is the expected value of the determinant of its
+        adjacency matrix?
+\end{itemize}
+
+Now John is asleep and the problem is haunting his dreams. Can you help him
+solve it?
+
+It can be shown that the answer is a rational number that can be written in
+the form $p/q$, with $q \not\equiv 0 \pmod{998\,244\,353}$. You should output
+your answer as an integer in $[0, 998\,244\,353)$ equivalent to $pq^{-1}$
+modulo $998\,244\,353$.
+
+\section*{Definitions}
+
+A tree on $N$ vertices is a connected undirected graph with $N$ vertices and
+$N - 1$ edges. A labeled tree is one whose vertices are labeled with the
+integers $1, \dots, N$. Two labeled trees are distinct if they do not have the
+same set of edges, where an edge is defined as an unordered pair of integers in
+$\{1, \dots, N\}$. Note that two distinct labeled trees may have the same
+structure, but different vertex labelings.
+
+\section*{Input}
+
+The input consists of a single line containing a single integer, $N$
+($1 \leq N \leq 10^6$), the number of vertices in the uniform random labeled
+tree.
+
+\section*{Output}
+
+Output a single integer in $[0, 998\,244\,353)$, the answer to the problem
+as a rational number modulo $998\,244\,353$.
