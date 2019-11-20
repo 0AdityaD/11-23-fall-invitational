@@ -20,4 +20,8 @@ a = line.split(' ')
 assert len(a) == n
 for i in range(0, n):
 	assert 0 <= int(a[i]) < k
+
+line = stdin.readline()
+assert line == ""
+
 sys.exit(42)
