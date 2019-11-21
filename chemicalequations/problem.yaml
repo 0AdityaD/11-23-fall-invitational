@@ -1,12 +1,14 @@
-source: University of Texas 2019 Fall invitational
+source: Fall 2019 UT Invitational Programming Contest 
+author: Aditya Arjun
 license: cc by-sa
-validation: default
-limits:
-    time_multiplier: 5
-    time_safety_margin: 2
-    memory: 2048
-    output: 8
-    compliation_time: 60
-    validation_time: 60
-    validation_memory: 2048
-    validation_output: 8
+
+#limits:
+#    time_multiplier: 5
+#    time_safety_margin: 2
+#    memory: 2048
+#    output: 8
+#    compliation_time: 60
+#    validation_time: 60
+#    validation_memory: 2048
+#    validation_output: 8
+#validation: default
