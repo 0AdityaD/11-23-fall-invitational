@@ -1,11 +1,29 @@
 \problemname{Leaky Cauldron}
 
-In a faraway magical land, there exists a very large cauldron. Unfortunately, it is leaking today! The cauldron holds a massive amount of water, but is leaking onto a rectangular stone area. The cauldron is floating right above the center square of the stone area, and over time, the water will spread from the center square outward.
+In a faraway magical land, there exists a very large cauldron. Unfortunately, it is leaking today!
+The cauldron holds a massive amount of water, but is leaking onto a rectangular stone area.
+The cauldron is floating right above the center square of the stone area, and over time, the leaked water
+will spread from the center square outward.
 
-The water flows down into the center square of a $N$ by $M$ grid, After $h$ seconds, we know that the water level in the center square (which has the lowest height) is guaranteed to be at height $h$. More specifically, all squares that are height $h$ or below and are connected to the center square will be covered with water. Given this, find the area of the largest rectangle at each point in time up until $H$ seconds.
+Different parts of the rectangular stone area vary in height. The stone area can be broken up into an $N$
+by $M$ grid, with each square in the grid potentially having a different height. The water flows down into
+the center square of the grid (which is guaranteed to have the lowest height). After $h$ seconds, the water
+level in the center square will be at height $h$. Once the water level reaches height $h$, any squares that
+have height $h$ or below that are connected to the center square by already submerged squares will be
+covered with water. Thus, as the water level gradually rises, more squares become submerged. This water is
+magic; it will instantly expand to submerge adjacent squares with height less than the height of the water,
+so don't worry about the rate of flow from the cauldron.
+
+At every second up until $H$ seconds, find the area of the largest sub-rectangle in the $N$ by $M$ grid that 
+is completely submerged by water. That is, every square of the rectangle should be covered by water for the
+rectangle to qualify.
 
 \section*{Input}
-On the first line, there will be 3 integers $N$, $M$, and $H$ respectively, with $1 \le N, M \le 200$ and $1 \le H \le 2500$. Then, the following $N$ lines will each contain $M$ space separated integers, each with a single height $h$, where $1 \le h \le H$. It is guarunteed that $N, M$ are odd.
+On the first line, there will be 3 integers $N$, $M$, and $H$ respectively, with $1 \le N, M < 200$
+and $1 \le H \le 2500$. Then, the following $N$ lines will each contain $M$ space separated integers,
+each with a single height $h$, where $0 \le h \le H$, giving the heights of the $N$ by $M$ grid.
+It is guaranteed that $N, M$ are odd. The height of the center square will always be $0$, and it will
+always be the lowest in the grid.
 
 \section*{Output}
-$h + 1$ lines, where the $i^th$ line is the largest rectangle of water when the water height has reached height $i$ in the middle square. 
+$h + 1$ lines, where the $i^th$ line is the area of the largest rectangle of water when the water height has reached height $i$ in the middle square. 
