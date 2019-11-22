@@ -1,10 +1,10 @@
 source: Fall 2019 UT Invitational Programming Contest
-author: Kevin Chen
+author: Kevin Chen, Aditya Durvasula
 license: cc by-sa
 
-#limits:
-#    time_multiplier: 5
-#    time_safety_margin: 2
+limits:
+    time_multiplier: 3
+    time_safety_margin: 2
 #    memory: 2048
 #    output: 16
 #    compilation_time: 240
