@@ -3,7 +3,7 @@ license: cc by-sa
 validation: default
 
 limits:
-    time_multiplier: 2
+    time_multiplier: 4
     time_safety_margin: 1
     memory: 2048
     output: 16
