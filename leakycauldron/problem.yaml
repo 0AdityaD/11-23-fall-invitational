@@ -1,13 +1,13 @@
-source: University of Texas 2019 Fall Invitational
+source: Fall 2019 UT Invitational Programming Contest 
+author: Kevin Li
 license: cc by-sa
-validation: default
 
-limits:
-    time_multiplier: 1
-    time_safety_margin: 1
-    memory: 2048
-    output: 16
-    compilation_time: 240
-    validation_time: 240
-    validation_memory: 2048
-    validation_output: 4
+# limits:
+#     time_multiplier: 1
+#     time_safety_margin: 1
+#     memory: 2048
+#     output: 16
+#     compilation_time: 240
+#     validation_time: 240
+#     validation_memory: 2048
+#     validation_output: 4
