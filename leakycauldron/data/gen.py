@@ -51,17 +51,19 @@ def gen_grid(n, m, h):
     grid[n // 2][m // 2] = 0
     return (n, m, h, grid)
 
+def randodd(l, r):
+	return 2 * randint((l-1)//2, (r-1)//2) + 1
 
 def main():
     global tc
     prep()
     tc = 0
     for _ in range(5):
-        writeTestCase(gen_grid(randint(10, 20), randint(10, 20), randint(100, 500)))
+        writeTestCase(gen_grid(randodd(10, 20), randodd(10, 20), randint(100, 500)))
     for _ in range(15):
-        writeTestCase(gen_grid(randint(150, 200), randint(150, 200), randint(2000, 2500)))
+        writeTestCase(gen_grid(randodd(150, 200), randodd(150, 200), randint(2000, 2500)))
     for _ in range(2):
-        writeTestCase(gen_grid(200, 200, 2500))
+        writeTestCase(gen_grid(199, 199, 2500))
     
 if __name__ == '__main__':
     main()
