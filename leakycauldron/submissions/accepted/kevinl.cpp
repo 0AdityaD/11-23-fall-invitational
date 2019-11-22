@@ -46,10 +46,28 @@ int heights[MAXN][MAXN];
 int whenActive[MAXN][MAXN];
 bool inqueue[MAXN][MAXN];
 
-vector<PII> covered[MAXH];
 bool active[MAXN][MAXN];
 
 int above[MAXN];
+
+void DFS(int x, int y, int& height)
+{
+	if (heights[x][y] > height)
+		return;
+
+	active[x][y] = true;
+
+	for (int i = 0; i < 4; ++i)
+	{
+		int nx = x + dirs[i][0];
+		int ny = y + dirs[i][1];
+
+		if (active[nx][ny])
+			continue;
+
+		DFS(nx, ny, height);
+	}
+}
 
 void solve()
 {
@@ -58,8 +76,6 @@ void solve()
 	// clear everything
 	for (i = 0; i < MAXN; ++i)
 		above[i] = 0;
-	for (i = 0; i < MAXH; ++i)
-		covered[i].clear();
 	for (i = 0; i < MAXN; ++i)
 		for (j = 0; j < MAXN; ++j)
 		{
@@ -142,18 +158,18 @@ void solve()
 		}
 	}
 
-	// go through each point and bucket sort
-	for (i = 1; i <= rows; ++i)
-		for (j = 1; j <= cols; ++j)
-		{
-			covered[whenActive[i][j]].PB(PII(i, j));
-		}
-
 	// now we iterate through all heights and find largest rectangle
 	for (int h = 0; h <= height; ++h)
 	{
+		/*
 		for (i = 0; i < covered[h].SZ; ++i)
 			active[covered[h][i].first][covered[h][i].second] = true;
+			*/
+		for (i = 1; i <= rows; ++i)
+			for (j = 1; j <= cols; ++j)
+				active[i][j] = false;
+
+		DFS(midx, midy, h);
 
 		for (i = 0; i <= cols; ++i)
 			above[i] = 0;
