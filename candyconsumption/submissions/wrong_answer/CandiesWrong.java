@@ -2,23 +2,48 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.InputMismatchException;
 
-public class Candies {
+public class CandiesWrong {
 
 	static long MOD = 1000000007;
 
-	static long solve(int K) {
-		long ans = 0;
-		long prod = 1;
+	static long modPow(long a, long p) {
+		if (p == 0)
+			return 1;
 
-		for (int len = 1; len <= K; len++) {
-			prod = (prod * (K - len + 1)) % MOD;
-			long curr = prod;
+		long ret = modPow((a * a) % MOD, p / 2);
+
+		if ((p & 1) == 1) {
+			return (a * ret) % MOD;
+		} else {
+			return ret;
+		}
+	}
+
+	static long modInv(long a) {
+		return modPow(a, MOD - 2);
+	}
+
+	static long solve(int K) {
+		long[] fact = new long[K + 1];
+		long[] invFact = new long[K + 1];
+
+		fact[0] = fact[1] = invFact[0] = invFact[1] = 1;
+		for (int i = 2; i <= K; i++) {
+			fact[i] = (i * fact[i - 1]) % MOD;
+			invFact[i] = modInv(fact[i]);
+		}
+
+		long ans = 0;
+		for (int len = 2; len <= K + 1; len++) {
+			long curr = fact[K - 1];
+			curr = (curr * invFact[len - 2]) % MOD;
+			curr = (curr * invFact[K - len + 1]) % MOD;
+			curr = (curr * fact[len - 1]) % MOD;
 			curr = (curr * len) % MOD;
-			curr = (curr * (len + 1)) % MOD;
 			ans = (ans + curr) % MOD;
 		}
 
-		return ans;
+		return K * ans;
 	}
 
 	public static void main(String[] args) {
