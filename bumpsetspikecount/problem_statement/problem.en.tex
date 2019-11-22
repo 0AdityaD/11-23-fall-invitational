@@ -1,0 +1,35 @@
+\problemname{Bump, Set, Spike, Count!}
+
+Volleyball season is starting at your local recreational center! This means all kinds of volleyball
+leagues are about to be in full swing: leagues for youths, seniors, amateurs, and so on. The most
+prestigious and highly contested league at the rec center is the Premier Adult Coed Volleyball
+League. A volleyball match in the Premier Adult Coed Volleyball League is played between $2$ teams of
+$6$ players. In recent years, the prestige of the league has become problematic, as all the top referees
+have opted to shirk their duties and compete as players, leaving only sub-par referees to oversee
+league matches.
+
+Since league organizers have already solved the problem of determining if a set of touches is valid,
+league organizers have now set their sights on a different problem. More specifically, they want to
+calculate the number ways to construct a valid sequence of touches of size $N$.
+
+In addition, the referees have determined to be lax in terms of the rules for a valid set of touches.
+A set of touches is valid if:
+
+\begin{enumerate}
+    \item A player cannot touch the ball twice in a row.
+    \item A team cannot touch the ball more than three times in a row.
+\end{enumerate}
+
+Other violations, such as net touches, carries, or the ball landing out of bounds will still be called
+by human referees, so the program need not worry about those.
+
+The league organizers have come to you for help. The ball is in your court!
+
+\section*{Input}
+
+The input consists of a single integer $N$ $(0 \leq N \leq 10^4)$.
+
+\section*{Output}
+
+Output the number of ways to constuct a valid sequence of touches of size $N$. Since the output may be
+large, output it modulo $10^9 + 7$.
