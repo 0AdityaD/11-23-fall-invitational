@@ -1,10 +1,19 @@
 \problemname{Con-cat-nation}
 
-In Catopolis, there is a widely held belief that their neighbor, Pupridge, is preparing to invade. The coolest cats have decided to send their best concats into Pupridge as spies, however there is a problem. Pupridge has a bullet-proof identification scheme: every pet seeking entry must present an id (string). The Border Collies check that the id's length is within allowed bounds, and that every character is followed by an allowed successor. 
+In Catopolis, there is a widely held belief that the neighboring nation Pupridge is preparing to invade.
+The coolest cats have decided to send their best concats into Pupridge as spies, but there's a problem.
+Pupridge has a bullet-proof identification scheme: every pet seeking entry must present an identifier in
+the form of a string consisting only of lower-case letters ``a'' to ``z''.
+The Border Collies check two things: that the identifier's length is within certain allowed bounds, and that 
+every character in the identifier is followed by an allowed successor character. 
 
-More specifically, the Border Collies have an minimum allowed length $x$, maximum allowed length $y$, and, for each character $c$, a list of characters that are allowed to follow $c$. (if a character is the last character of the id, they don't check for the next character). For example, if the only character allowed to follow ``a'' is ``a'', then ``aaaaa'' is valid, while ``az'' is not, as ``z'' follows ``a''.
+More specifically, the Border Collies have decided on a minimum allowed identifier length $x$, a maximum
+allowed identifier length $y$, and, for each lower-case letter $c$, a list of letters that are allowed
+to follow $c$. Characters at the end of identifiers are not checked for valid successors.
+For example, if the only character allowed to follow ``a'' is ``a'', then ``aaaaa'' is a valid identifier,
+while ``az'' is not, as ``z'' is not allowed to follow ``a''.
 
-As cats can't type they can't forge ids!
+Cats cannot type, so they cannot forge identifiers!
 
 \begin{figure}[h]
 	\begin{center}
@@ -15,18 +24,25 @@ As cats can't type they can't forge ids!
 
 \medskip
 
-Of course, the crafty cats have found a workaround: they can use a scanner and printer to append a fellow cat's id to their own! However resources are scarce, each cat can only append one id to their own, and this id has to be from one of their fellow cat's. (Note that they are allowed to append a copy of their own id).
+Of course, the crafty cats have found a workaround: they can use a scanner and printer to append identifiers 
+of fellow cats to their own identifiers! Resources are scarce, so each cat can only append one other
+identifier to their own, and this identifier has to be from the pool of existing cat identifiers (note that
+cats are allowed to append a copy of their own identifier).
 
 \medskip
 
-For each cat, it is your job to figure out if they can pass verification.
-
-Ids are only made of lowercase characters a through z.
+For each cat, it is your job to figure out if they can pass verification under this scheme!
 
 \section*{Input}
-On the first line, $n, x, y$, the number of cats, minimum allowed length of the id, and the maximum allowed length of the id respectively. $1 \leq N \leq 10^5$, $0 \leq x \leq y \leq 20$.
-$26$ lines follow, denoting the valid successors of the characters ``a, b, c, \ldots, z'' respectively. Each line has the format $x s$, where $x$ is the number of valid successors and $s$ is a string containing all of the valid successors.
-$n$ lines follow each containing a string $id_i$, $1 \leq |id_i| \leq 20$ denoting the id of the $i$th cat.
+The first line contains space-separated integers $N$ ($1 \leq N \leq 10^5$), $x$, $y$
+($0 \leq x \leq y \leq 20$): the number of cats, the minimum allowed length of the identifier, and the
+maximum allowed length of the identifier.
+$26$ lines follow, denoting the valid successors of the characters ``a, b, c, \ldots, z'', respectively.
+Each line has the format $k$ $S$, where $k$ is the number of valid successors the character has and $S$ is a
+string of length $k$ containing all of the valid successors.
+Finally, $N$ lines follow, each containing a string $id_i$ ($1 \leq |id_i| \leq 20$), giving the identifier
+of the $i$th cat.
 
 \section*{Output}
-$n$ lines, the $i$th of is either ``Feline good!'' if the cat can pass verification, or ``Get meowt!'' if th/ey cannot.
+For each cat, output ``Feline good!'' if the cat can pass verification and  `` Get meowt!'' if they cannot.
+The output should follow the order given in the input, and each cat's output should be on a new line.
