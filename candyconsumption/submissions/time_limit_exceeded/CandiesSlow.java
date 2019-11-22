@@ -1,30 +1,37 @@
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashSet;
 import java.util.InputMismatchException;
 
-public class Candies {
+public class CandiesSlow {
 
-	static long MOD = 1000000007;
+	final static long MOD = 1000000007;
 
-	static long solve(int K) {
-		long ans = 0;
-		long prod = 1;
-
-		for (int len = 1; len <= K; len++) {
-			prod = (prod * (K - len + 1)) % MOD;
-			long curr = prod;
-			curr = (curr * len) % MOD;
-			curr = (curr * (len + 1)) % MOD;
-			ans = (ans + curr) % MOD;
-		}
-
-		return ans;
-	}
+	static HashSet<Integer> seq;
+	static int N;
+	static long ans;
 
 	public static void main(String[] args) {
 		FastScanner in = new FastScanner(System.in);
-		int N = in.nextInt();
-		System.out.println(solve(N));
+		N = in.nextInt();
+		ans = 0;
+
+		seq = new HashSet<>();
+
+		recurse();
+		System.out.println(ans);
+	}
+
+	static void recurse() {
+		for (int i = 0; i < N; i++) {
+			if (seq.contains(i)) {
+				ans = (ans + seq.size() + 1L) % MOD;
+			} else {
+				seq.add(i);
+				recurse();
+				seq.remove(i);
+			}
+		}
 	}
 
 	// Matt Fontaine's Fast I/O
