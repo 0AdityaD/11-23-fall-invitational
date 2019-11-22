@@ -1,24 +1,51 @@
 \problemname{Martian Patrol}
 
-Being so close to a nuclear superpower, martians take their defense very seriously.
+Being so close to a nuclear superpower, Martians take their defense very seriously.
+The Martian military base is structured as a binary tree rooted at $1$, with nodes numbered $1 \dots N$.
+Some Martian soldiers patrol paths on the tree, moving from node to node. 
 
-The martian military base is in the form of a binary tree rooted at $1$, with node numbers $1 \dots N$. Some martian soldier patrol paths on the tree, moving from node to node, always facing toward the root (this is the entrance). 
+The Martian patrol system is very complex. Every Martian patrol soldier is assigned two nodes as endpoints
+for their patrol and moves back and forth between these endpoints, always taking the shortest path.
+No two soldiers share an endpoint, and a soldier's left and right endpoints cannot be the same.
 
-The martian patrol system is very complex. Every martian soldier is assigned two endpoints for their patrol, and moves between these endpoints, always taking the shortest path. No two soldiers share an endpoint, and a soldier's left and right endpoints cannot be the same.
+The patrol schedule works as follows. At the beginning of the day, all Martian soldiers start at their
+left endpoints. Each soldier starts moving from their left to their right endpoint sometime in the
+next $N - 1$ seconds, traversing one edge every second. This time is randomly chosen for each soldier
+independently by the Martian's sophisticated algorithm to prevent patrol timings becoming predictable. While
+there is an element of randomness, the start time for each soldier is always chosen such that the
+soldier will reach their right endpoint before (or as soon as) the $N - 1$ seconds ends. Once a soldier
+starts moving, they keep moving until they reach their right endpoint. This $N - 1$ seconds is considered a
+patrol cycle. This procedure then repeats, only this time soldiers start from their right endpoint and
+move to their left, and so on.
 
-The patrol schedule works as follows. At the beginning of the day, all martian soldiers start at their left endpoints. Then, each soldier at some point in the next $N-1$ seconds starts moving to their right endpoint, traversing an edge every second. This time is randomly chosen for each soldier individually by the martians sophisticated algorithm, so that their patrol times don't become predictable. This time is chosen such that the soldier will reach their endpoint before (or as soon as) the $N-1$ seconds ends. Once a soldier starts moving they keep moving until they reach their right endpoint. This procedure repeats, only this time soldiers start from their right and move to their left.
+(For any given node $n$, all nodes in its left subtree are considered ``to the left'', and similarly all
+nodes in its right subtree are considered ``to the right''. A soldier at node $i$ is ``on the left'' of a
+soldier at node $j$ if and only if $i$ is in $j$'s left subtree, or $i$ is in the left subtree of node $i$
+and node $j$'s lowest common ancestor and $j$ is in its right subtree. A soldier being `` on the right'' of
+another soldier is defined similarly.)
 
-(For any given node $n$, all nodes in its left subtree are considered ``to the left'', and similarly all nodes in its right subtree are considered ``to the right'') 
+The soldiers get lonely patrolling the Martian base all day, so they like to gossip with their buddies.
+If it is \emph{possible} for a soldier to meet (be at the same node or edge as) another soldier during
+their patrol given some start time assignments, then the soldiers consider each other buddies. Soldiers
+become sad if any of their buddies is always on one side during a patrol cycle (always
+on the left or at the same node, or always on the right or at the same node), as when they gossip it hurts
+their ear.
 
-However, the soldiers can get very lonely, so they like to gossip with their buddies. If it is \emph{possible} for them to meet another soldier during their patrol given some start time assignments, they consider them their buddy. Soldiers become sad if one of their buddies is always on one side during a cycle (always to the left or equal, or always to the right or equal), as when they gossip its hurts their ear. 
+The Martians are also planning to add a super secret room to the military base. This room will be added
+as a child of some node in the base without violating the binary nature of the tree. Once this room is added,
+Martian soldiers will be allowed to have it as one of their patrol endpoints.
 
-In addition, there exists a super secret room, which must be added as a child of some node in the martian base (wherever it is added it cannot violate the binary nature of the tree). Martians are allowed to have this room as one of their endpoints.
-
-Your job is to count the number of possible non-sad arrangements of soldiers and rooms $\mod 10^9 + 7$. An arrangement is considered non-sad if it is impossible for any soldier to be sad, regardless of which starting times the algorithm picks. Two arrangements are considered different if and only if there exists a node in one position not in the other, or a soldiers path in one arrangement doesn't exist in the other. (Note that soldiers are not considered distinct)
+Your job is to count the number of ways to add the super secret room and assign patrol endpoints to any
+number of soldiers such that the assignment of endpoints is "non-sad". An arrangement is considered "non-sad"
+if it is impossible for any soldier to be sad, regardless of which starting times the algorithm picks. Two
+arrangments are considered different if and only if there exists a node in one arrangement not in the other,
+or a soldier's path in one arrangement doesn't exist in the other. Note that soldiers themselves are not
+considered distinct. The answer may be large, so output it modulo $10^9 + 7$.
 
 \section*{Input}
-On the first line, one integer $N$, $2 \leq N \leq 10^6$.
-$N$ lines follow, the $i$th ($1$-indexed) line each having two integers $l_i, r_i$, denoting the left and right child of node $i$. $0$ denotes no child.
+The first line contains an integer $N$ ($2 \leq N \leq 10^6$).
+$N$ lines follow, with the $i$th ($1$-indexed) line having two integers $l_i, r_i$, denoting the left and
+right child of node $i$. A $0$ denotes that there is no child.
 
 \section*{Output}
 A single integer, the number of non-sad arrangements of soldiers and rooms $\mod 10^9 + 7$.
