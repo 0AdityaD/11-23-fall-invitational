@@ -1,31 +1,26 @@
 \problemname{Bump, Set, Spike, Count!}
 
 Volleyball season is starting at your local recreational center! This means all kinds of volleyball
-leagues are about to be in full swing: leagues for youths, seniors, amateurs, and so on. The most
-prestigious and highly contested league at the rec center is the Premier Adult Coed Volleyball
-League. A volleyball match in the Premier Adult Coed Volleyball League is played between $2$ teams of
-$6$ players. In recent years, the prestige of the league has become problematic, as all the top referees
-have opted to shirk their duties and compete as players, leaving only sub-par referees to oversee
-league matches.
+leagues are about to be in full swing: leagues for youths, seniors, amateurs, and so on. Though the
+Premier Adult Coed Volleyball League is considered the most prestigious league, the Youth Girl's
+Volleyball League is typically considered the second most prestigious.
 
-Since league organizers have already solved the problem of determining if a set of touches is valid, 
-league organizers have now set their sights on a different problem. More specifically, they want to 
-calculate the number ways to construct a valid sequence of touches of size $N$. Two sequences of touches 
-are considered different if there is some index $i$ where the $i$-th players who touched the 
-volleyball are different.
+Again, matches in this league are played by typical volleyball rules: there are two teams consisting of six
+players each. Since league organizers have already solved the problem of determining if a set of touches is
+valid, league organizers have now set their sights on a different problem. They want to
+calculate the number ways to construct a valid rally consisting of exactly $N$ touches.
 
-In addition, the referees have loosened the rules for a valid set of touches.
-A set of touches is valid if:
+Because this is not a coed league, the rules governing a valid set of touches in a rally sequence 
+are looser, as there no restrictions around the gender of the players. A sequence of touches is only invalid
+if either of the following is violated:
 
 \begin{enumerate}
     \item A player cannot touch the ball twice in a row.
     \item A team cannot touch the ball more than three times in a row.
 \end{enumerate}
 
-Other violations, such as net touches, carries, or the ball landing out of bounds will still be called
-by human referees, so the program need not worry about those.
-
-The league organizers have come to you for help. The ball is in your court!
+The league organizers have come to you for help. The ball is in your court! Since the number of ways
+maybe large, output the answer module $10^9 + 7$.
 
 \section*{Input}
 
