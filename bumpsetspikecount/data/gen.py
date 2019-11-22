@@ -58,7 +58,7 @@ def main():
     for i in [10, 100, 1000]:
         writeTestCase(i, False)
     for _ in range(20):
-        writeTestCase(random.randint(9000, 10000), False)
+        writeTestCase(random.randint(45000, 50000), False)
 
 
 

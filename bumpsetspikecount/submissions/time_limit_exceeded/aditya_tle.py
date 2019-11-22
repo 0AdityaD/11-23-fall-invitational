@@ -6,9 +6,9 @@ def solve(A):
     n = len(A)
     violations = []
     for i in range(n):
-        if i + 4 <= n:
-            if A[i][0] == A[i + 1][0] == A[i + 2][0] == A[i + 3][0] and (i == 0 or A[i - 1][0] != A[i][0]):
-                violations.append((i + 3, A[i][0]))
+        if i + 3 <= n:
+            if A[i][0] == A[i + 1][0] == A[i + 2][0]:
+                violations.append((i + 2, A[i][0]))
     for i in range(n):
         if i + 2 <= n:
             if A[i] == A[i + 1]:
