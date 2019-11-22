@@ -72,9 +72,14 @@ void solve()
 	// input, make an artificial barrier 
 	cin >> rows >> cols >> height;
 	for (i = 0; i < rows + 2; i += rows + 1)
-		for (j = 0; j < cols + 2; j += cols + 1)
+		for (j = 0; j < cols + 2; ++j)
 		{
 			heights[i][j] = MAXH;
+		}
+	for (i = 0; i < cols + 2; i += cols + 1)
+		for (j = 0; j < rows + 2; ++j)
+		{
+			heights[j][i] = MAXH;
 		}
 
 	for (i = 1; i <= rows; ++i)
@@ -112,7 +117,7 @@ void solve()
 			{
 				if (heights[r2][c2] > heights[r][c])
 				{
-					if (whenActive[r2][c2] > heights[r2][c2])
+					if (whenActive[r2][c2] > heights[r2][c2] && whenActive[r][c] <= heights[r2][c2])
 					{
 						whenActive[r2][c2] = heights[r2][c2];
 
@@ -202,7 +207,7 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(0);
 	cout.tie(0);
-	//freopen("", "r", stdin);
+	//freopen("21.in", "r", stdin);
 	//freopen("", "w", stdout);
 
 	solve();
