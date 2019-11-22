@@ -99,9 +99,12 @@ void solve(int idx) {
 int main() {
     scanf(" %d", &n);
 
-    solve(0);
+    if (n == 1) printf("0\n");
+    else {
+        solve(0);
 
-    printf("%d\n", (int) (1LL * ans * modinv(denom) % MOD));
+        printf("%d\n", (int) (1LL * ans * modinv(denom) % MOD));
+    }
 
     return 0;
 }
