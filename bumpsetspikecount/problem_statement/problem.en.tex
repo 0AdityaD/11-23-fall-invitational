@@ -8,11 +8,13 @@ $6$ players. In recent years, the prestige of the league has become problematic,
 have opted to shirk their duties and compete as players, leaving only sub-par referees to oversee
 league matches.
 
-Since league organizers have already solved the problem of determining if a set of touches is valid,
-league organizers have now set their sights on a different problem. More specifically, they want to
-calculate the number ways to construct a valid sequence of touches of size $N$.
+Since league organizers have already solved the problem of determining if a set of touches is valid, 
+league organizers have now set their sights on a different problem. More specifically, they want to 
+calculate the number ways to construct a valid sequence of touches of size $N$. Two sequences of touches 
+are considered different if there is some index $i$ where the $i$-th players who touched the 
+volleyball are different.
 
-In addition, the referees have determined to be lax in terms of the rules for a valid set of touches.
+In addition, the referees have loosened the rules for a valid set of touches.
 A set of touches is valid if:
 
 \begin{enumerate}
@@ -32,4 +34,4 @@ The input consists of a single integer $N$ $(0 \leq N \leq 10^4)$.
 \section*{Output}
 
 Output the number of ways to constuct a valid sequence of touches of size $N$. Since the output may be
-large, output it modulo $10^9 + 7$.
+olarge, output it modulo $10^9 + 7$.
