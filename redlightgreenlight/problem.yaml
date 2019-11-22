@@ -1,5 +1,5 @@
 source: Fall 2019 UT Invitational Programming Contest
-author: Lucas Gretta
+author: Kevin Chen
 license: cc by-sa
 
 limits:
@@ -7,8 +7,9 @@ limits:
     time_safety_margin: 1
 #    memory: 2048
 #    output: 16
-#    compliation_time: 240
+#    compilation_time: 240
 #    validation_time: 240
 #    validation_memory: 2048
 #    validation_output: 4
-#validation: default
+# validation: default
+validator_flags: float_tolerance 1e-6

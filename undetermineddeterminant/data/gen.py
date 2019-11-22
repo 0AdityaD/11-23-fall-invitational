@@ -54,7 +54,6 @@ def main():
     writeTestCase(sample2(), True)
 
     tc = 0
-    # generate long sequences with no violations
     writeTestCase(['1000000'], False)
     writeTestCase(['999999'], False)
     writeTestCase(['999998'], False)
