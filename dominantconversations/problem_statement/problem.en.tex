@@ -1,6 +1,11 @@
 \problemname{Dominant Conversations}
 
-Whenever people get together, there are some people who dominate regions of the conversation. We are given a record of a N-second long conversation which says who was talking at each second (people talk in second intervals). For each of K people, your job is to find out the number of regions of the conversation they dominate. A region is a chunk of time from second i to second j inclusive, $i \leq j$, and it is dominated by person $k$ if more that half of the entries in $[i,j]$ are $k$.
+Whenever people get together, there are some people who dominate regions of the conversation.
+We are given a record of a $N$-second long conversation which details who was talking at each second
+(people talk in second-long intervals). For each of $K$ people, your job is to find out the number of
+regions of the conversation they dominate. A region is a chunk of time from second $i$ to second $j$
+inclusive, with $i \leq j$, and it is dominated by person $k$ if more that half of the entries in
+the range $[i,j]$ of the record are $k$.
 
 \section*{Input}
 The first line contains space-separated integers $n,k$ such that $1 \leq n,k \leq 10^6$.
