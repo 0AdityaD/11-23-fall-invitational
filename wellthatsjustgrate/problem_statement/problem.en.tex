@@ -1,0 +1,56 @@
+\problemname{Well That's Just Grate}
+
+A grating is defined as ``any regularly spaced collection of essentially identical, parallel, elongated
+elements''. Most of the time, this means a single set of parallel elongated elements, but they sometimes also
+consist of two sets, with the second set perpendicular to the first. In the grating industry, these are
+known as ``grid'' or ``mesh'' gratings, due to the grid shape they naturally form.
+
+George is the Chief Innovator at George and Gary's Great Grating Group, and he's looking to come up with the 
+next big idea to disrupt the grating industry. One day, he has his big ``Eureka!'' moment: why must the
+elongated elements in gratings be parallel? What if a grating just consisted of elongated metal wires welded
+together in arbitrary orientations? Sure, they could be perpendicular or parallel, but the point was they
+didn't HAVE to be. Now, all ideas still must have limitations. The grating would still be bounded by an
+$L$ by $W$ rectangular border. Then $N$ lines of metal wire would be welded to the grating, with each
+being defined as a line segment where both endpoints lie somewhere on the rectangular border.
+
+Most of the gratings manufactured by George and Gary's Great Grating Group are used as storm drains, and
+one of the biggest issues when it comes to storm drains is people dropping phones down them. Thus,
+given a certain grating design, George wants to know if a phone dropped flat at a particular spot on the
+grating will fall through. For this he consults Gary, the Chief Physicist, who tells him the following:
+
+\begin{quotation}
+\textit{
+    Given that a rectangular phone falls flat on the grate at a certain position, find the points
+    at which the edges of the phone intersect metal wire on the grate. Then, form a maximal polygon with
+    the points of intersection along the edges of the phone. If the center of gravity of the phone falls
+    within this polygon, then the phone will fall into the grate. Otherwise, it will not.
+}
+\end{quotation}
+
+Knowing this, George has all the tools he needs to determine if dropping the phone in certain positions will
+result in the phone falling through the grate. Can you help him in this endeavor?
+
+George assumes that weight is distributed equally across the phone, so its center of gravity will be at the
+center of the rectangle.
+
+\section*{Input}
+
+The first line of input consists of four space-separated integers, $L$, $W$, $N$, and $P$: the length of
+the grating, the width of the grating, the number of metal wires welded onto the grating, and the
+number of phone positions that George is considering. On the coordinate grid, the border of the grating
+will be the grid-aligned rectangle with a corner at $(0, 0)$ and the opposite corner at $(L, W)$.
+
+$N$ lines follow, each consisting of four space-separated integers $x_1$, $y_1$, $x_2$, $y_2$, giving the
+position of one of the metal wires on the grating. The metal wire is represented as a line segment with
+endpoints $(x_1, y_1)$ and $(x_2, y_2)$. $(x_1, y_1)$ and $(x_2, y_2)$ are guaranteed to lie on two
+different edges of the rectangular grating.
+
+Finally, $P$ lines follow, each consisting of four space-separated $a_1$, $b_1$, $a_2$, $b_2$, giving the
+position at which a phone is dropped. The phone is represented by a grid-aligned rectangle with lower left
+corner at $(a_1, b_1)$ and upper right corner at $(a_2, b_2)$. It is guaranteed that $a_2 > a_1$ and
+$b_2 > b_1$.
+
+\section*{Output}
+
+For each of the phone drop locations in question, output "Yes" if the phone falls through the grating,
+and "No" otherwise, each on a new line of output.
