@@ -19,7 +19,11 @@ is completely submerged by water. That is, every square of the rectangle should 
 rectangle to qualify.
 
 \section*{Input}
-On the first line, there will be 3 integers $N$, $M$, and $H$ respectively, with $1 \le N, M < 200$ and $1 \le H \le 2500$. Then, the following $N$ lines will each contain $M$ space separated integers, each with a single height $h$, where $1 \le h \le H$. It is guarunteed that $N, M$ are odd.
+On the first line, there will be 3 integers $N$, $M$, and $H$ respectively, with $1 \le N, M < 200$
+and $1 \le H \le 2500$. Then, the following $N$ lines will each contain $M$ space separated integers,
+each with a single height $h$, where $0 \le h \le H$, giving the heights of the $N$ by $M$ grid.
+It is guaranteed that $N, M$ are odd. The height of the center square will always be $0$, and it will
+always be the lowest in the grid.
 
 \section*{Output}
 $h + 1$ lines, where the $i^th$ line is the area of the largest rectangle of water when the water height has reached height $i$ in the middle square. 
