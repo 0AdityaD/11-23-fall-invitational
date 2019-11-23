@@ -3,31 +3,32 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.TreeMap;
+import java.math.BigInteger;
 
 public class ChemicalEquation {
 
 	public static void main(String[] args) {
 		FastScanner in = new FastScanner(System.in);
 		int N = in.nextInt();
-		TreeMap<String, TreeMap<String, Integer>> eqn = new TreeMap<>();
+		TreeMap<String, TreeMap<String, BigInteger>> eqn = new TreeMap<>();
 		HashMap<String, Boolean> vis = new HashMap<>();
 
 		for (int i = 0; i < N; i++) {
 			String name = in.next();
-			TreeMap<String, Integer> place = new TreeMap<>();
+			TreeMap<String, BigInteger> place = new TreeMap<>();
 			eqn.put(name, place);
 			vis.put(name, false);
 
 			int ri = in.nextInt();
 			for (int j = 0; j < ri; j++) {
-				int q = in.nextInt();
+				long q = in.nextInt();
 				String reactant = in.next();
-				place.put(reactant, q);
+				place.put(reactant, new BigInteger(Long.toString(q)));
 			}
 		}
 
 		String desired = in.next();
-		TreeMap<String, Integer> res = simplify(desired, eqn, vis);
+		TreeMap<String, BigInteger> res = simplify(desired, eqn, vis);
 
 		if (res == null) {
 			System.out.println(desired + " " + 1);
@@ -38,25 +39,25 @@ public class ChemicalEquation {
 		}
 	}
 
-	static TreeMap<String, Integer> simplify(String curr, TreeMap<String, TreeMap<String, Integer>> eqn,
+	static TreeMap<String, BigInteger> simplify(String curr, TreeMap<String, TreeMap<String, BigInteger>> eqn,
 			HashMap<String, Boolean> vis) {
 		if (!vis.containsKey(curr))
 			return null;
 		if (vis.get(curr))
 			return eqn.get(curr);
 
-		TreeMap<String, Integer> simplified = new TreeMap<>();
-		TreeMap<String, Integer> prev = eqn.get(curr);
+		TreeMap<String, BigInteger> simplified = new TreeMap<>();
+		TreeMap<String, BigInteger> prev = eqn.get(curr);
 
 		for (String reactant : prev.keySet()) {
-			int quantity = prev.get(reactant);
-			TreeMap<String, Integer> sub = simplify(reactant, eqn, vis);
+			BigInteger quantity = prev.get(reactant);
+			TreeMap<String, BigInteger> sub = simplify(reactant, eqn, vis);
 			if (sub == null) {
-				simplified.put(reactant, simplified.getOrDefault(reactant, 0) + quantity);
+				simplified.put(reactant, simplified.getOrDefault(reactant, BigInteger.ZERO).add(quantity));
 			} else {
 				for (String subreactant : sub.keySet()) {
 					simplified.put(subreactant,
-							simplified.getOrDefault(subreactant, 0) + quantity * sub.get(subreactant));
+							simplified.getOrDefault(subreactant, BigInteger.ZERO).add(quantity.multiply(sub.get(subreactant))));
 				}
 			}
 		}
