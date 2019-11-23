@@ -4,7 +4,7 @@ license: cc by-sa
 
 limits:
     time_multiplier: 1
-    time_safety_margin: 2
+#    time_safety_margin: 2
 #    memory: 2048
 #    output: 16
 #    compliation_time: 240

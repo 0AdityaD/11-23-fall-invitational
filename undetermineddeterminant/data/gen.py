@@ -6,7 +6,7 @@ import time
 import zipfile
 
 
-random.seed(12383)
+random.seed(1337)
 tc = 0
 
 def writeTestCase(data, sample=False):
@@ -54,11 +54,14 @@ def main():
     writeTestCase(sample2(), True)
 
     tc = 0
+    for _ in range(3):
+        writeTestCase([str(random.randint(1, 1000))], False)
+    for _ in range(24):
+        writeTestCase([str(random.randint(1001, 1000000))], False)
     writeTestCase(['1000000'], False)
     writeTestCase(['999999'], False)
     writeTestCase(['999998'], False)
-    for _ in range(27):
-        writeTestCase([str(random.randint(1, 1000000))], False)
+    
 
 if __name__ == '__main__':
     main()
