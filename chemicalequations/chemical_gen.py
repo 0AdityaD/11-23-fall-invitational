@@ -64,7 +64,7 @@ def writeTestCase(data, sample):
                 print(f'{data[i].name} {len(data[i].adj)}', file=fout)
                 for j in data[i].adj:
                     vis[j] = True
-                    print(f'{random.randint(1, 10)} {data[j].name}', file=fout)
+                    print(f'{random.randint(1, 3)} {data[j].name}', file=fout)
         
         desIndex = random.randint(0, sz - 1)
         while not vis[desIndex]:
@@ -99,7 +99,7 @@ def main():
         writeTestCase(genGraph(12), False)
 
     for i in range(0, 20):
-        writeTestCase(genGraph(1000), False)
+        writeTestCase(genGraph(50), False)
 
 
 if __name__ == '__main__':
