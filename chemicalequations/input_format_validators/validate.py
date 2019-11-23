@@ -13,7 +13,7 @@ assert re.match(integer + "\n", l)
 
 n = int(l)
 
-assert 1 <= n <= 1000
+assert 1 <= n <= 50
 
 for i in range(n):
     l = stdin.readline()
